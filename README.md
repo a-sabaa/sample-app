@@ -1,5 +1,5 @@
-### Sample app
-# Intro
+# Sample app
+### Intro
 This app is solely created to explore a full stack of technologies aimed to create a fully managed cloud native architecture application with extra added levels of complexity to enable to exploration of scalability, maintainability and realiability patterns that enable the aforementioned architecture.
 
 I will keep the documentation up to date with initial architecture decisions that enable the design and implementation of the architecture with the following principles in mind:
