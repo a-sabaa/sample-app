@@ -1,13 +1,19 @@
 terraform {
-  
+  required_providers {
+    kubectl = {
+      source = "gavinbunney/kubectl"
+      version = "1.14.0"
+    }
+  }
 }
 
-module "local-environment" {
-  source = "./local"
-  count = var.environment == "local" ? 1: 0
+provider "kubectl" {
+  host                   = module.k8s-cluster.k8s_host_endpoint
+  cluster_ca_certificate = base64decode(module.k8s-cluster.k8s_client_certification)
+  load_config_file       = false
 }
 
-module "aws-environment" {
-  source = "./aws"
-  count = var.environment == "aws" ? 1: 0
+module "k8s-cluster" {
+  source = "./k8s-cluster"
+  environment = var.environment
 }
