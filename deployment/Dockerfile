@@ -1,7 +1,9 @@
-FROM hashicorp/terraform:1.6  
+FROM hashicorp/terraform:1.6
 
-WORKDIR /terraform  
+RUN apk add openrc docker=24.0.7-r0
+RUN rc-update add docker default
 
-COPY . .  
+WORKDIR /deploy
 
-ENTRYPOINT ["terraform"]
+# ENTRYPOINT [ "sh" ]
+ENTRYPOINT ["terraform", "-chdir=/deploy/terraform"]

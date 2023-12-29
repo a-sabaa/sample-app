@@ -11,3 +11,5 @@ I will keep the documentation up to date with initial architecture decisions tha
 
 The general architecture of the system will look like this:
 ![](docs/architecture.png)
+
+For deployment, check [deployment homepage](docs/deployment/deployment.md)
