@@ -7,10 +7,6 @@ terraform {
   }
 }
 
-resource "docker_image" "webserver" {
-  name         = "nginx:1.24.0-perl"
-}
-
 resource "docker_image" "scalable-app" {
   name = "scalable-app"
   build {

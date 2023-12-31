@@ -41,11 +41,38 @@ spec:
         app: backend-app
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
+      - name: backend-app
+        image: backend-app
         ports:
         - containerPort: 80
-
+ strategy:
+   type: RollingUpdate
+   rollingUpdate:
+     maxUnavailable: 1
+--------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scalable-app
+spec:
+  selector:
+    matchLabels:
+      app: scalable-app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: scalable-app
+    spec:
+      containers:
+      - name: scalable-app
+        image: scalable-app
+        ports:
+        - containerPort: 80
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 1
 
 YAML
 }
