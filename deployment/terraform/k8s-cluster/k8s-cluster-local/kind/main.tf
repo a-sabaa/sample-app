@@ -17,6 +17,11 @@ resource "kind_cluster" "local_cluster" {
       kind              = "Cluster"
       api_version       = "kind.x-k8s.io/v1alpha4"
 
+      networking {
+        api_server_address  = "host.docker.internal"
+        api_server_port     = 46501
+      }
+
       node {
           role = "control-plane"
 

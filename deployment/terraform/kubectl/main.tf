@@ -26,32 +26,26 @@ terraform {
 
 resource "kubectl_manifest" "manifest" {
     yaml_body = <<-YAML
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: ingress-resource-backend
-spec:
-  rules:
-  - http:
-      host: sample-app.local
-      paths:
-      - path: /testpath
-        pathType: "Prefix"
-        backend:
-          serviceName: test
-          servicePort: 80
--------------------------------------
-apiVersion: v1
-kind: Service
-metadata:
-  name: my-service
+  name: backend-app
 spec:
   selector:
-    app.kubernetes.io/name: MyApp
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 9376
+    matchLabels:
+      app: backend-app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: backend-app
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+
 
 YAML
 }
