@@ -12,3 +12,13 @@ output "k8s_config_file_location" {
     value = module.kind.k8s_config_file_location
     description = "Kube config file location in cluster"
 }
+
+output "docker_image_scalable_app" {
+    value = module.docker-images.docker_image_scalable_app
+    description = "Docker image id that was created for the scalable app"
+}
+
+output "docker_image_backend_app" {
+    value = module.docker-images.docker_image_backend_app
+    description = "Docker image id that was created for the backend app"
+}

@@ -2,8 +2,8 @@ FROM python:3.9.18-slim-bullseye
 
 WORKDIR /python-docker
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+COPY requirements-scalable.txt requirements-scalable.txt
+RUN pip3 install -r requirements-scalable.txt
 
 COPY . .
 

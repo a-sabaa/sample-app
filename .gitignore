@@ -2,3 +2,4 @@ deployment/terraform/.terraform
 deployment/terraform/local-cluster-config
 deployment/terraform/terraform.tfstate
 deployment/terraform/terraform.tfstate.backup
+*/htpasswod

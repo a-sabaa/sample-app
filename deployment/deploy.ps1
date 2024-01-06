@@ -20,7 +20,7 @@ docker build -t terraform-sample-app .
 # Mount is for pushing the code into the docker container
 # docker.sock is to enable docker containers to create docker containers on host machine
 # net=host allows the container to share 127.0.0.1 ip with the host
-docker run `
+docker run --rm `
     --mount type=bind,source="${AppPath}",target="/deploy/app" `
     --mount type=bind,source="${TerraformPath}",target="/deploy/terraform" `
     --net=host `
@@ -28,11 +28,10 @@ docker run `
     terraform-sample-app init `
     -var="environment=$environment"
 
-docker run `
+docker run --rm `
     --mount type=bind,source="${AppPath}",target="/deploy/app" `
     --mount type=bind,source="${TerraformPath}",target="/deploy/terraform" `
     --net=host `
     -v //var/run/docker.sock:/var/run/docker.sock `
-    terraform-sample-app apply `
-    -auto-approve `
+    terraform-sample-app apply -auto-approve `
     -var="environment=$environment"
