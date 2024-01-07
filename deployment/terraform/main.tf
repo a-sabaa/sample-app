@@ -37,9 +37,7 @@ module "k8s-cluster" {
 
 module "kubectl" {
   source = "./kubectl"
-
+  
   docker_image_backend_app = module.k8s-cluster.docker_image_backend_app
   docker_image_scalable_app = module.k8s-cluster.docker_image_scalable_app
-  docker_registry_name = module.k8s-cluster.docker_registry_name
-  docker_registry_port = module.k8s-cluster.docker_registry_port
 }

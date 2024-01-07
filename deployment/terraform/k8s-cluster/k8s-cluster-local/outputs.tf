@@ -22,14 +22,3 @@ output "docker_image_backend_app" {
     value = module.docker-images.docker_image_backend_app
     description = "Docker image name that was created for the backend app"
 }
-
-
-output "docker_registry_port" {
-    value = module.docker-images.docker_registry_port
-    description = "Docker image id that was created for the scalable app"
-}
-
-output "docker_registry_name" {
-    value = module.docker-images.docker_registry_name
-    description = "Docker image id that was created for the backend app"
-}

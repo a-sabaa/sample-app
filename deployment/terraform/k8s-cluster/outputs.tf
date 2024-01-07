@@ -37,13 +37,4 @@ output "docker_image_backend_app" {
     description = "Docker image id that was created for the backend app"
 }
 
-output "docker_registry_name" {
-    value = lookup(local.get_output[var.environment], "docker_registry_name")
-    description = "Name of docker registry where images are pushed"
-}
-
-output "docker_registry_port" {
-    value = lookup(local.get_output[var.environment], "docker_registry_port")
-    description = "Port of docker registry where images are pushed"
-}
 
