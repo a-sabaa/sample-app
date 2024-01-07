@@ -19,5 +19,5 @@ RUN if [ "$DEPLOY_ENV" = "local" ]; then \
 
 WORKDIR /deploy
 
-ENTRYPOINT [ "sh" ]
-# ENTRYPOINT ["terraform", "-chdir=/deploy/terraform"]
+# ENTRYPOINT [ "sh" ]
+ENTRYPOINT ["terraform", "-chdir=/deploy/terraform"]

@@ -24,10 +24,9 @@ terraform {
 # }
 
 provider "kubectl" {
-  host                   = module.k8s-cluster.k8s_host_endpoint
-  client_certificate     = module.k8s-cluster.k8s_client_certificate
   config_context_cluster = module.k8s-cluster.k8s_config_context_cluster
-  load_config_file       = false
+  load_config_file       = true
+  config_path            = "$HOME/kube/config"
 }
 
 module "k8s-cluster" {
@@ -37,7 +36,7 @@ module "k8s-cluster" {
 
 module "kubectl" {
   source = "./kubectl"
-  
+
   docker_image_backend_app = module.k8s-cluster.docker_image_backend_app
   docker_image_scalable_app = module.k8s-cluster.docker_image_scalable_app
 }
