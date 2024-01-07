@@ -14,7 +14,7 @@ $TerraformPath = Join-Path $PSScriptRoot "..\deployment\terraform"
 $environment = $args[0]
 
 # Build the Docker image
-docker build -t terraform-sample-app .
+docker build --build-arg DEPLOY_ENV=$environment -t terraform-sample-app .
 
 # Run the Docker container with the environment variable
 # Mount is for pushing the code into the docker container

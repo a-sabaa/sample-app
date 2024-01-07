@@ -7,4 +7,7 @@ module "docker-images" {
 
 module "kind" {
   source = "./kind"
+
+  docker_image_backend_app = module.docker-images.docker_image_backend_app
+  docker_image_scalable_app = module.docker-images.docker_image_scalable_app
 }

@@ -19,18 +19,15 @@ terraform {
 #     host = module.k8s-cluster.k8s_host_endpoint
 #   }
 # }
-
-provider "docker" {
-  registry_auth {
-    address     = "127.0.0.1:5000"
-    username    = "testuser"
-    password    = "testpassword"
-  }
-}
+# module "helm" {
+#   source = "./helm"
+# }
 
 provider "kubectl" {
   host                   = module.k8s-cluster.k8s_host_endpoint
-  config_path            = module.k8s-cluster.k8s_config_file_location
+  client_certificate     = module.k8s-cluster.k8s_client_certificate
+  config_context_cluster = module.k8s-cluster.k8s_config_context_cluster
+  load_config_file       = false
 }
 
 module "k8s-cluster" {
@@ -38,13 +35,11 @@ module "k8s-cluster" {
   environment = var.environment
 }
 
-# module "helm" {
-#   source = "./helm"
-# }
-
 module "kubectl" {
   source = "./kubectl"
 
   docker_image_backend_app = module.k8s-cluster.docker_image_backend_app
   docker_image_scalable_app = module.k8s-cluster.docker_image_scalable_app
+  docker_registry_name = module.k8s-cluster.docker_registry_name
+  docker_registry_port = module.k8s-cluster.docker_registry_port
 }

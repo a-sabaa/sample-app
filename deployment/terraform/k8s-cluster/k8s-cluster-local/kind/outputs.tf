@@ -1,14 +1,14 @@
 output "k8s_host_endpoint" {
-    value = kind_cluster.local-cluster.endpoint
+    value = file("${path.module}/k8s_host_endpoint.txt")
     description = "API endpoint to communicate with kind cluster"
 }
 
-output "k8s_client_certification" {
-    value = kind_cluster.local-cluster.client_certificate
+output "k8s_client_certificate" {
+    value = file("${path.module}/k8s_client_certificate.txt")
     description = "client certificate required to sign requests sent to the kind cluster"
 }
 
-output "k8s_config_file_location" {
-    value = kind_cluster.local-cluster.kubeconfig_path
-    description = "Kube config file location in cluster"
+output "k8s_config_context_cluster" {
+    value = "kind-local-cluster"
+    description = "Cluster config for kubectl"
 }
