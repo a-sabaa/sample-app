@@ -12,19 +12,14 @@ locals {
   }
 }
 
-output "k8s_host_endpoint" {
-    value = lookup(local.get_output[var.environment], "k8s_host_endpoint")
-    description = "Forwards to parent the K8s host endpoint to be used to create the infrastructure using kubectl or helm"
+output "k8s_config_context" {
+    value = lookup(local.get_output[var.environment], "k8s_config_context")
+    description = "K8s cluster config context"
 }
 
-output "k8s_client_certificate" {
-    value = lookup(local.get_output[var.environment], "k8s_client_certificate")
-    description = "Forwards to parent the K8s client certificate to be used to create the infrastructure using kubectl or helm"
-}
-
-output "k8s_config_context_cluster" {
-    value = lookup(local.get_output[var.environment], "k8s_config_context_cluster")
-    description = "Cluster config for kubectl"
+output "k8s_config_path" {
+    value = lookup(local.get_output[var.environment], "k8s_config_path")
+    description = "K8s cluster config path for kubectl"
 }
 
 output "docker_image_scalable_app" {
