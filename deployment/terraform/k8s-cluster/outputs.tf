@@ -31,5 +31,3 @@ output "docker_image_backend_app" {
     value = lookup(local.get_output[var.environment], "docker_image_backend_app")
     description = "Docker image id that was created for the backend app"
 }
-
-

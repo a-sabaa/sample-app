@@ -1,5 +1,5 @@
 # Deprecated
-This document is longer relevant, only kept for historical reasons
+This document is longer relevant, only kept for historical reasons. By using kind load image, it was enough to not use a local registry
 
 
 ~~#### Concepts & Constraints

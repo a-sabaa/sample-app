@@ -8,10 +8,9 @@ terraform {
 }
 
 resource "kind_cluster" "local-cluster" {
-    name            = "local-cluster"
-    wait_for_ready  = true
-    node_image      = "kindest/node:v1.29.0"
-
+  name            = "local-cluster"
+  wait_for_ready  = true
+  node_image      = "kindest/node:v1.29.0"
   kind_config {
       kind              = "Cluster"
       api_version       = "kind.x-k8s.io/v1alpha4"
@@ -37,12 +36,6 @@ resource "kind_cluster" "local-cluster" {
       node {
         role  = "worker"
       }
-  }
-}
-
-resource "null_resource" "create_kind_cluster" {
-  provisioner "local-exec" {
-    command = "kind create cluster --name ${var.k8s_cluster_name} --image kindest/node:v1.29.0 --config ${path.module}/kind-config.yml"
   }
 }
 

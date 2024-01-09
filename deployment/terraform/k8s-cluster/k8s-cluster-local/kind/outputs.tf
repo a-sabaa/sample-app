@@ -1,13 +1,9 @@
 output "k8s_config_context" {
-    value = "kind-${var.k8s_cluster_name}"
+    value = kind_cluster.local-cluster.name
     description = "Cluster config for kubectl"
-    precondition {
-        condition     = null_resource.create_kind_cluster.id
-        error_message = "Kind cluster not created yet."
-    }
 }
 
 output "k8s_config_path" {
-    value = "${path.module}/kubeconfig.yml"
+    value = kind_cluster.local-cluster.kubeconfig
     description = "Kube config file location in cluster"
 }
