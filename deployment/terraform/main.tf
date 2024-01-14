@@ -36,19 +36,19 @@ terraform {
 #   docker_image_scalable_app = module.k8s-cluster.docker_image_scalable_app
 # }
 
-# provider "kubernetes" {
-#   config_path    = module.k8s-cluster.k8s_config_path
-#   config_context = module.k8s-cluster.k8s_config_context
-# }
+provider "kubernetes" {
+  config_path    = module.k8s-cluster.k8s_config_path
+  config_context = module.k8s-cluster.k8s_config_context
+}
 
 module "k8s-cluster" {
   source = "./k8s-cluster"
   environment = var.environment
 }
 
-# module "kubernetes" {
-#   source = "./k8s"
+module "kubernetes" {
+  source = "./k8s"
 
-#   docker_image_backend_app = module.k8s-cluster.docker_image_backend_app
-#   docker_image_scalable_app = module.k8s-cluster.docker_image_scalable_app
-# }
+  docker_image_backend_app = module.k8s-cluster.docker_image_backend_app
+  docker_image_scalable_app = module.k8s-cluster.docker_image_scalable_app
+}

@@ -34,4 +34,13 @@ docker run --rm `
     --net=host `
     -v //var/run/docker.sock:/var/run/docker.sock `
     terraform-sample-app apply -auto-approve `
+    -var="environment=$environment" `
+    -target="module.k8s-cluster"
+
+docker run --rm `
+    --mount type=bind,source="${AppPath}",target="/deploy/app" `
+    --mount type=bind,source="${TerraformPath}",target="/deploy/terraform" `
+    --net=host `
+    -v //var/run/docker.sock:/var/run/docker.sock `
+    terraform-sample-app apply -auto-approve `
     -var="environment=$environment"
